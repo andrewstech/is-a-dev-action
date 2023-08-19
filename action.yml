@@ -1,0 +1,16 @@
+name: Upload Folder Action
+description: Uploads a folder and its contents using an API key
+inputs:
+  api_key:
+    description: 'API key for authentication'
+    required: true
+  folder_path:
+    description: 'Path to the folder to upload'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Upload folder and contents
+      run: ./.github/actions/upload-folder/upload-script.sh
